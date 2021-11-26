@@ -1,7 +1,25 @@
-{% if sex == 'm' %}
-    <h1>Olá senhor {{name}}</h1>
-{% elif sex == 'f' %}
-    <h1>Olá senhora {{name}}</h1>
-{% else %}
-    <h1>Olá {{name}}</h1>
-{% endif %}
+<h1>
+    {% if sexo == 'M' or sexo == 'm' %}
+        Olá senhor {{nome}}
+    {% elif sexo == 'F' or sexo == 'f' %}
+        Olá senhora {{nome}}
+    {% else %}
+        Olá {{nome}}
+    {% endif %}
+</h1>
+
+<ul>
+    {% for pessoa in lista %}
+        <li>
+            {% if pessoa.sexo == 'M' or pessoa.sexo == 'm' %}
+                Olá senhor {{pessoa.nome}}
+            {% elif pessoa.sexo == 'F' or pessoa.sexo == 'f' %}
+                Olá senhora {{pessoa.nome}}
+            {% else %}
+                Olá {{pessoa.nome}}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+
+    
