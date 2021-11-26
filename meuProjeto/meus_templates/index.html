@@ -1,1 +1,7 @@
-<h1>Ola {{nome}}</h1>
+{% if sex == 'm' %}
+    <h1>Olá senhor {{name}}</h1>
+{% elif sex == 'f' %}
+    <h1>Olá senhora {{name}}</h1>
+{% else %}
+    <h1>Olá {{name}}</h1>
+{% endif %}
