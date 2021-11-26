@@ -4,7 +4,7 @@
 
 {% block main %}
 
-    <h1>
+    <h1 class="programe_facil">
         {% if sexo == 'M' or sexo == 'm' %}
             Olá senhor {{nome}}
         {% elif sexo == 'F' or sexo == 'f' %}
@@ -28,7 +28,7 @@
         {% endfor %}
     </ul>
 
-    <button class="btn btn-info">CLIQUE AQUI</button>
+    <button class="btn btn-info" onclick="olaMundo()">CLIQUE AQUI</button>
 
     {% include 'footer.html' with name=nome sex=sexo %}
 
