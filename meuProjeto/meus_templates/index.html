@@ -1,25 +1,34 @@
-<h1>
-    {% if sexo == 'M' or sexo == 'm' %}
-        Olá senhor {{nome}}
-    {% elif sexo == 'F' or sexo == 'f' %}
-        Olá senhora {{nome}}
-    {% else %}
-        Olá {{nome}}
-    {% endif %}
-</h1>
+{% extends 'base.html' %}
 
-<ul>
-    {% for pessoa in lista %}
-        <li>
-            {% if pessoa.sexo == 'M' or pessoa.sexo == 'm' %}
-                Olá senhor {{pessoa.nome}}
-            {% elif pessoa.sexo == 'F' or pessoa.sexo == 'f' %}
-                Olá senhora {{pessoa.nome}}
-            {% else %}
-                Olá {{pessoa.nome}}
-            {% endif %}
-        </li>
-    {% endfor %}
-</ul>
+{% block title %} Seja Bem Vindo - Página Principal {% endblock %}
 
+{% block main %}
+
+    <h1>
+        {% if sexo == 'M' or sexo == 'm' %}
+            Olá senhor {{nome}}
+        {% elif sexo == 'F' or sexo == 'f' %}
+            Olá senhora {{nome}}
+        {% else %}
+            Olá {{nome}}
+        {% endif %}
+    </h1>
+
+    <ul>
+        {% for pessoa in lista %}
+            <li>
+                {% if pessoa.sexo == 'M' or pessoa.sexo == 'm' %}
+                    Olá senhor {{pessoa.nome}}
+                {% elif pessoa.sexo == 'F' or pessoa.sexo == 'f' %}
+                    Olá senhora {{pessoa.nome}}
+                {% else %}
+                    Olá {{pessoa.nome}}
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <button class="btn btn-info">CLIQUE AQUI</button>
+
+{% endblock %}
     
