@@ -3,7 +3,8 @@ from .models import (
     Mensalista,
     Pessoa,
     Veiculo,
-    MovRotativo
+    MovRotativo,
+    MovMensalista
 )
 
 
@@ -28,4 +29,10 @@ class MovRotativoForm(ModelForm):
 class MensalistaForm(ModelForm):
     class Meta:
         model = Mensalista
+        fields = '__all__'
+
+
+class MovMensalistaForm(ModelForm):
+    class Meta:
+        model = MovMensalista
         fields = '__all__'
