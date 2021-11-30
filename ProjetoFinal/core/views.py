@@ -7,11 +7,17 @@ from .models import (
     Veiculo
 )
 
-from .forms import PessoaForm
+from .forms import (
+    PessoaForm,
+    VeiculoForm
+)
 
 def home(request):
     context = {'mensagem': 'Ola mundo...'}
     return render(request, 'core/index.html', context)
+
+
+# LISTAR
 
 
 def lista_pessoas(request):
@@ -21,16 +27,11 @@ def lista_pessoas(request):
     return render(request, 'core/lista_pessoas.html', data)
 
 
-def pessoa_novo(request):
-    form = PessoaForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-    return redirect('core_lista_pessoas')
-
-
 def lista_veiculos(request):
     veiculos = Veiculo.objects.all()
-    return render(request, 'core/lista_veiculos.html', {'veiculos': veiculos})
+    form = VeiculoForm()
+    data = {'veiculos': veiculos, 'form': form}
+    return render(request, 'core/lista_veiculos.html', data)
 
 
 def lista_movrotativos(request):
@@ -46,3 +47,20 @@ def lista_mensalistas(request):
 def lista_movmensalistas(request):
     mov_mensal = MovMensalista.objects.all()
     return render(request, 'core/lista_movmensalistas.html', {'mov_mensal': mov_mensal})
+
+
+# CRIAR
+
+
+def pessoa_novo(request):
+    form = PessoaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('core_lista_pessoas')
+
+
+def veiculo_novo(request):
+    form = VeiculoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+    return redirect('core_lista_veiculos')
