@@ -60,7 +60,7 @@ class MovRotativo(models.Model):
         return self.valor_hora * self.horas_total()
 
     def __str__(self):
-        return self.veiculo.placa + ' - ' + str(self.pago)
+        return str(self.checkin) + " - " + self.veiculo.placa
         
 
 class MovMensalista(models.Model):
