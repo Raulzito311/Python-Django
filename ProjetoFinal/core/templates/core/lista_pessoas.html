@@ -8,7 +8,7 @@
 {% endfor %}
 </ul>
 
-<form action="{% url 'core_pessoa_novo' %}" method="post">
+<form action="{% url 'core_pessoa_novo' %}" method="POST">
     {% csrf_token %}
 
     {{ form.as_p }}
