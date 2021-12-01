@@ -2,7 +2,9 @@
 
 <ul>
 {% for mensalista in mensalistas %}
-    <li>{{ mensalista }}</li>
+    <li>
+        <a href="{% url 'core_mensalista_update' mensalista.id %}">{{ mensalista }}</a>
+    </li>
 {% endfor %}
 </ul>
 
@@ -11,5 +13,5 @@
 
     {{ form.as_p }}
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit">Salvar</button>
 </form>

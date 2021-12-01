@@ -2,7 +2,9 @@
 
 <ul>
 {% for veiculo in veiculos %}
-    <li>{{ veiculo.placa }}</li>
+    <li>
+        <a href="{% url 'core_veiculo_update' veiculo.id %}">{{ veiculo }}</a>
+    </li>
 {% endfor %}
 </ul>
 
@@ -11,5 +13,5 @@
 
     {{ form.as_p }}
 
-    <button type="submit">Cadastrar</button>
+    <button type="submit">Salvar</button>
 </form>
