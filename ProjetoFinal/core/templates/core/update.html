@@ -1,6 +1,7 @@
-<h2>Updating {{ title }}: {{ obj }}</h2>
+<h2>General Updating {{ title }}: {{ obj }}</h2>
 
-<form method="POST">
+<!-- 'action' é desnecessário já que vai derecionar para a página que a pessoa já está -->
+<form action="{% url update_url obj.id %}" method="POST">
     {% csrf_token %}
 
     {{ form.as_p }}

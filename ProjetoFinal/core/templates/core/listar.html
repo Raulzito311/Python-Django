@@ -1,0 +1,17 @@
+<h2>Geral Lista {{ titulo }}</h2>
+
+<ul>
+{% for obj in objs %}
+    <li>
+        <a href="{% url update_url obj.id %}">{{ obj }}</a>
+    </li>
+{% endfor %}
+</ul>
+
+<form action="{% url create_url %}" method="POST">
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit">Salvar</button>
+</form>
