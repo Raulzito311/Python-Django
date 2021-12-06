@@ -1,12 +1,50 @@
-<h2>Atualizar {{ title }}: {{ obj }}</h2>
+{% extends 'base.html' %}
+{% load bootstrap %}
 
-<!-- 'action' é desnecessário já que vai derecionar para a página que a pessoa já está -->
-<form action="{% url update_url obj.id %}" method="POST">
-    {% csrf_token %}
+{% block menu %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'core_home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">Serviços</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veículos</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Movimentos Rotativos</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">Movimentos Mensalistas</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Log Out</a>
+        </li>
+    </ul>
+{% endblock %}
 
-    {{ form.as_p }}
+{% block main %}
+    <div class="row">
+        <div class="col-md-6">
+            <h1>Atualizar {{ title }}: {{ obj }}</h1>
+        
+            <!-- 'action' é desnecessário já que vai derecionar para a página que a pessoa já está -->
+            <form action="{% url update_url obj.id %}" method="POST">
+                {% csrf_token %}
 
-    <button type="submit">Salvar</button>
-</form>
+                {{ form|bootstrap }}
 
-<a href="{% url delete_url obj.id %}">Deletar</a>
+                <p></p>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="{% url delete_url obj.id %}" class="btn btn-danger">Deletar</a>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}

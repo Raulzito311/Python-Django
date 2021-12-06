@@ -1,17 +1,64 @@
-<h2>Listar {{ titulo }}</h2>
+{% extends 'base.html' %}
+{% load bootstrap %}
 
-<ul>
-{% for obj in objs %}
-    <li>
-        <a href="{% url update_url obj.id %}">{{ obj }}</a>
-    </li>
-{% endfor %}
-</ul>
+{% block menu %}
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="{% url 'core_home' %}">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link active dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                aria-expanded="false">Serviços</a>
+            <ul class="dropdown-menu">
+                <!--{% if titulo == 'Pessoas' %}
+                    <li><a class="dropdown-item active" href="{% url 'core_lista_pessoas' %}">Pessoas</a></li>
+                {% else %}
+                    <li><a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a></li>
+                {% endif %}-->
+                <li><a class="dropdown-item" href="{% url 'core_lista_pessoas' %}">Pessoas</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_veiculos' %}">Veículos</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_mensalistas' %}">Mensalistas</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_movrotativos' %}">Movimentos Rotativos</a></li>
+                <li><a class="dropdown-item" href="{% url 'core_lista_movmensalistas' %}">Movimentos Mensalistas</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link disabled" href="#">Log Out</a>
+        </li>
+    </ul>
+{% endblock %}
 
-<form action="{% url create_url %}" method="POST">
-    {% csrf_token %}
-
-    {{ form.as_p }}
-
-    <button type="submit">Salvar</button>
-</form>
+{% block main %}
+    <div class="row">
+        <div class="col">
+            <h1>Listar {{ titulo }}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="{% url create_url %}" method="POST">
+                {% csrf_token %}
+        
+                {{ form|bootstrap }}
+                
+                <p></p>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <ul>
+                {% for obj in objs %}
+                    <li>
+                        <a href="{% url update_url obj.id %}">{{ obj }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+{% endblock %}
