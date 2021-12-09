@@ -52,13 +52,35 @@
             </form>
         </div>
         <div class="col-sm-6">
-            <ul>
+            <!--ul>
                 {% for obj in objs %}
                     <li>
                         <a href="{% url update_url obj.id %}">{{ obj }}</a>
                     </li>
                 {% endfor %}
-            </ul>
+            </ul-->
+            <table class="table">
+                <thead class="table-dark">
+                    <tr>
+                        {% for key, value in objs.0.items %}
+                            <th>{{ key }}</th>
+                        {% endfor %}
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for obj in objs %}
+                        <tr>
+                            {% for key, value in obj.items %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                            <td>
+                                <a href="{% url update_url obj.id %}">Update</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
 {% endblock %}

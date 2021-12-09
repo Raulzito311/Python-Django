@@ -28,10 +28,15 @@ def lista_pessoas(request):
     pessoas = Pessoa.objects.all()
     form = PessoaForm()
     data['titulo'] = 'Pessoas'
-    data['objs'] = pessoas
     data['form'] = form
     data['create_url'] = 'core_pessoa_novo'
     data['update_url'] = 'core_pessoa_update'
+    objs = []
+    for obj in pessoas:
+        atts = dict((name, getattr(obj, name)) for name in vars(obj) if not name.startswith('_'))
+        objs.append(atts)
+    data['objs'] = objs
+
     return render(request, 'core/listar.html', data)
 
 
@@ -81,10 +86,15 @@ def lista_veiculos(request):
     veiculos = Veiculo.objects.all()
     form = VeiculoForm()
     data['titulo'] = 'Veículos'
-    data['objs'] = veiculos
     data['form'] = form
     data['create_url'] = 'core_veiculo_novo'
     data['update_url'] = 'core_veiculo_update'
+    objs = []
+    for obj in veiculos:
+        atts = dict((name, getattr(obj, name)) for name in vars(obj) if not name.startswith('_'))
+        objs.append(atts)
+    data['objs'] = objs
+
     return render(request, 'core/listar.html', data)
 
 
@@ -134,10 +144,15 @@ def lista_movrotativos(request):
     movs = MovRotativo.objects.all()
     form = MovRotativoForm()
     data['titulo'] = 'Movimentos Rotativos'
-    data['objs'] = movs
     data['form'] = form
     data['create_url'] = 'core_movrotativo_novo'
     data['update_url'] = 'core_movrotativo_update'
+    objs = []
+    for obj in movs:
+        atts = dict((name, getattr(obj, name)) for name in vars(obj) if not name.startswith('_'))
+        objs.append(atts)
+    data['objs'] = objs
+
     return render(request, 'core/listar.html', data)
 
 
@@ -187,10 +202,15 @@ def lista_mensalistas(request):
     mensalistas = Mensalista.objects.all()
     form = MensalistaForm()
     data['titulo'] = 'Mensalistas'
-    data['objs'] = mensalistas
     data['form'] = form
     data['create_url'] = 'core_mensalista_novo'
     data['update_url'] = 'core_mensalista_update'
+    objs = []
+    for obj in mensalistas:
+        atts = dict((name, getattr(obj, name)) for name in vars(obj) if not name.startswith('_'))
+        objs.append(atts)
+    data['objs'] = objs
+
     return render(request, 'core/listar.html', data)
 
 
@@ -240,10 +260,15 @@ def lista_movmensalistas(request):
     movs = MovMensalista.objects.all()
     form = MovMensalistaForm()
     data['titulo'] = 'Movimentos Mensalistas'
-    data['objs'] = movs
     data['form'] = form
     data['create_url'] = 'core_movmensalista_novo'
     data['update_url'] = 'core_movmensalista_update'
+    objs = []
+    for obj in movs:
+        atts = dict((name, getattr(obj, name)) for name in vars(obj) if not name.startswith('_'))
+        objs.append(atts)
+    data['objs'] = objs
+
     return render(request, 'core/listar.html', data)
 
 
