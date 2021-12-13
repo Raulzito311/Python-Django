@@ -28,59 +28,58 @@
         <li class="nav-item">
             <a class="nav-link" href="/admin">Admin</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#">Log Out</a>
-        </li>
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'logout' %}">Log Out, {{ user }}</a>
+            </li>
+        {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'login' %}">Login</a>
+            </li>
+        {% endif %}
     </ul>
 {% endblock %}
 
 {% block main %}
     <div class="row">
-        <div class="col">
-            <h1>Listar {{ titulo }}</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <form action="{% url create_url %}" method="POST">
-                {% csrf_token %}
-        
-                {{ form|bootstrap }}
-                
-                <p></p>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
-        </div>
-        <div class="col-sm-6">
-            <!--ul>
-                {% for obj in objs %}
-                    <li>
-                        <a href="{% url update_url obj.id %}">{{ obj }}</a>
-                    </li>
-                {% endfor %}
-            </ul-->
-            <table class="table">
-                <thead class="table-dark">
-                    <tr>
-                        {% for key, value in objs.0.items %}
-                            <th>{{ key }}</th>
-                        {% endfor %}
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for obj in objs %}
-                        <tr>
-                            {% for key, value in obj.items %}
-                                <td>{{ value }}</td>
-                            {% endfor %}
-                            <td>
-                                <a href="{% url update_url obj.id %}">Update</a>
-                            </td>
-                        </tr>
+        <h1>Listar {{ titulo }}</h1>
+        <!--ul>
+            {% for obj in objs %}
+                <li>
+                    <a href="{% url update_url obj.id %}">{{ obj }}</a>
+                </li>
+            {% endfor %}
+        </ul-->
+        <table class="table">
+            <thead class="table-dark">
+                <tr>
+                    {% for key, value in objs.0.items %}
+                        <th>{{ key }}</th>
                     {% endfor %}
-                </tbody>
-            </table>
-        </div>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for obj in objs %}
+                    <tr>
+                        {% for key, value in obj.items %}
+                            <td>{{ value }}</td>
+                        {% endfor %}
+                        <td>
+                            <a href="{% url update_url obj.id %}">Update</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h1>Cadastrar</h1>
+        <form action="{% url create_url %}" method="POST">
+            {% csrf_token %}
+    
+            {{ form|bootstrap }}
+            
+            <p></p>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+        </form>
     </div>
 {% endblock %}
