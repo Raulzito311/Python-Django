@@ -1,5 +1,69 @@
 {% extends 'website/base.html' %}
+{% load static %}
 
 {% block main %}
-    <h1>Seja bem vindo ao website</h1>
+    <div class="row">
+        <div class="col-6">
+            <h1>Estacionamento 24 Horas</h1>
+            <span>Slogan da sua empresa aqui</span>
+        </div>
+        <div class="col-6">
+            <img src="{% static 'img/parking.png' %}" alt="Estacionamento 24 Horas">
+        </div>
+    </div>
+
+    {% include 'website/menu.html' %}
+
+    <div class="row row-space">
+        <div class="col-6">
+            Lorem ipsum dolor sit amet. Est voluptas similique et quia quam id quia voluptas. 
+            Ut alias quis et aliquam atque hic maiores nihil ex repellat dolorem ea molestiae 
+            quia aut dolor velit. Vel corrupti eius sit cumque accusantium eos facilis 
+            doloremque ut delectus quia eum ratione aspernatur.
+
+        </div>
+        <div class="col-6">
+            At quam repellendus id voluptas corporis ut ipsa laudantium aut dolor qui galisum 
+            accusantium et saepe porro eum earum inventore. In recusandae earum et natus 
+            voluptates aut sunt internos. Et sunt dolores qui omnis corporis in iusto error 
+            cum voluptas voluptatem eos earum quod qui expedita rerum est debitis quae. 
+            Sit rerum minima galisum voluptate ut vitae nihil.
+        </div>
+    </div>
+
+    <div class="row row-space">
+        <div class="col-4">
+            Lorem ipsum dolor sit amet. Est voluptas similique et quia quam id quia voluptas. 
+            Ut alias quis et aliquam atque hic maiores nihil ex repellat dolorem ea molestiae 
+            quia aut dolor velit. Vel corrupti eius sit cumque accusantium eos facilis 
+            doloremque ut delectus quia eum ratione aspernatur.
+
+        </div>
+        <div class="col-4">
+            <img src="{% static 'img/parking.png' %}" alt="Estacionamento 24 Horas">
+        </div>
+        <div class="col-4">
+            33 quaerat quos sed voluptatem accusamus rem voluptas dolore. Ab animi ipsam eos 
+            Quis minus a cupiditate eaque. Quo possimus minima et quidem perferendis et 
+            corrupti atque. Et natus totam ea provident corrupti et reprehenderit mollitia?
+        </div>
+    </div>
+    <div class="row row-space">
+        <div class="col-6">
+            Lorem ipsum dolor sit amet. Est voluptas similique et quia quam id quia voluptas. 
+            Ut alias quis et aliquam atque hic maiores nihil ex repellat dolorem ea molestiae 
+            quia aut dolor velit. Vel corrupti eius sit cumque accusantium eos facilis 
+            doloremque ut delectus quia eum ratione aspernatur.
+
+        </div>
+        <div class="col-6">
+            At quam repellendus id voluptas corporis ut ipsa laudantium aut dolor qui galisum 
+            accusantium et saepe porro eum earum inventore. In recusandae earum et natus 
+            voluptates aut sunt internos. Et sunt dolores qui omnis corporis in iusto error 
+            cum voluptas voluptatem eos earum quod qui expedita rerum est debitis quae. 
+            Sit rerum minima galisum voluptate ut vitae nihil.
+        </div>
+    </div>
+
+    {% include 'website/footer.html' %}
 {% endblock %}
