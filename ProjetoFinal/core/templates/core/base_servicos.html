@@ -1,0 +1,9 @@
+{% extends 'core/base.html' %}
+
+{% block menu_servicos %}active{% endblock %}
+
+{% block menu_pessoas %}{% if tag == "Pes" %}active{% endif %}{% endblock %}
+{% block menu_veiculos %}{% if tag == "Vei" %}active{% endif %}{% endblock %}
+{% block menu_mensalistas %}{% if tag == "Mens" %}active{% endif %}{% endblock %}
+{% block menu_movrotativos %}{% if tag == "MovRot" %}active{% endif %}{% endblock %}
+{% block menu_movmensalistas %}{% if tag == "MovMens" %}active{% endif %}{% endblock %}

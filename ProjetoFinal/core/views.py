@@ -30,6 +30,7 @@ def lista_pessoas(request):
     data = {}
     pessoas = Pessoa.objects.all()
     form = PessoaForm()
+    data['tag'] = 'Pes'
     data['titulo'] = 'Pessoas'
     data['form'] = form
     data['create_url'] = 'core_pessoa_novo'
@@ -56,6 +57,7 @@ def pessoa_update(request, id):
     data = {}
     pessoa = Pessoa.objects.get(id=id)
     form = PessoaForm(request.POST or None, instance=pessoa)
+    data['tag'] = 'Pes'
     data['title'] = 'Pessoa'
     data['obj'] = pessoa
     data['form'] = form
@@ -74,6 +76,7 @@ def pessoa_update(request, id):
 def pessoa_delete(request, id):
     data = {}
     pessoa = Pessoa.objects.get(id=id)
+    data['tag'] = 'Pes'
     data['obj'] = pessoa
     data['delete_url'] = 'core_pessoa_delete'
 
@@ -92,6 +95,7 @@ def lista_veiculos(request):
     data = {}
     veiculos = Veiculo.objects.all()
     form = VeiculoForm()
+    data['tag'] = 'Vei'
     data['titulo'] = 'Veículos'
     data['form'] = form
     data['create_url'] = 'core_veiculo_novo'
@@ -118,6 +122,7 @@ def veiculo_update(request, id):
     data = {}
     veiculo = Veiculo.objects.get(id=id)
     form = VeiculoForm(request.POST or None, instance=veiculo)
+    data['tag'] = 'Vei'
     data['title'] = 'Veículo'
     data['obj'] = veiculo
     data['form'] = form
@@ -136,6 +141,7 @@ def veiculo_update(request, id):
 def veiculo_delete(request, id):
     data = {}
     veiculo = Veiculo.objects.get(id=id)
+    data['tag'] = 'Vei'
     data['obj'] = veiculo
     data['delete_url'] = 'core_veiculo_delete'
 
@@ -154,6 +160,7 @@ def lista_movrotativos(request):
     data = {}
     movs = MovRotativo.objects.all()
     form = MovRotativoForm()
+    data['tag'] = 'MovRot'
     data['titulo'] = 'Movimentos Rotativos'
     data['form'] = form
     data['create_url'] = 'core_movrotativo_novo'
@@ -180,6 +187,7 @@ def movrotativo_update(request, id):
     data = {}
     mov = MovRotativo.objects.get(id=id)
     form = MovRotativoForm(request.POST or None, instance=mov)
+    data['tag'] = 'MovRot'
     data['title'] = 'Movimento Rotativo'
     data['obj'] = mov
     data['form'] = form
@@ -198,6 +206,7 @@ def movrotativo_update(request, id):
 def movrotativo_delete(request, id):
     data = {}
     mov_rot = MovRotativo.objects.get(id=id)
+    data['tag'] = 'MovRot'
     data['obj'] = mov_rot
     data['delete_url'] = 'core_movrotativo_delete'
 
@@ -216,6 +225,7 @@ def lista_mensalistas(request):
     data = {}
     mensalistas = Mensalista.objects.all()
     form = MensalistaForm()
+    data['tag'] = 'Mens'
     data['titulo'] = 'Mensalistas'
     data['form'] = form
     data['create_url'] = 'core_mensalista_novo'
@@ -242,6 +252,7 @@ def mensalista_update(request, id):
     data = {}
     mensalista = Mensalista.objects.get(id=id)
     form = MensalistaForm(request.POST or None, instance=mensalista)
+    data['tag'] = 'Mens'
     data['title'] = 'Mensalista'
     data['obj'] = mensalista
     data['form'] = form
@@ -260,6 +271,7 @@ def mensalista_update(request, id):
 def mensalista_delete(request, id):
     data = {}
     mensalista = Mensalista.objects.get(id=id)
+    data['tag'] = 'Mens'
     data['obj'] = mensalista
     data['delete_url'] = 'core_mensalista_delete'
 
@@ -278,6 +290,7 @@ def lista_movmensalistas(request):
     data = {}
     movs = MovMensalista.objects.all()
     form = MovMensalistaForm()
+    data['tag'] = 'MovMens'
     data['titulo'] = 'Movimentos Mensalistas'
     data['form'] = form
     data['create_url'] = 'core_movmensalista_novo'
@@ -304,6 +317,7 @@ def movmensalista_update(request, id):
     data = {}
     mov = MovMensalista.objects.get(id=id)
     form = MovMensalistaForm(request.POST or None, instance=mov)
+    data['tag'] = 'MovMens'
     data['title'] = 'Movimento Mensalista'
     data['obj'] = mov
     data['form'] = form
@@ -322,6 +336,7 @@ def movmensalista_update(request, id):
 def movmensalista_delete(request, id):
     data = {}
     mov = MovMensalista.objects.get(id=id)
+    data['tag'] = 'MovMens'
     data['obj'] = mov
     data['delete_url'] = 'core_movmensalista_delete'
 

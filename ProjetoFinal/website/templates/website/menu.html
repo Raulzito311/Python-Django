@@ -1,23 +1,35 @@
-<div class="row">
+<div class="row  row-space">
     <div class="col-12">
         <ul class="nav nav-pills nav-fill">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                {% block menu_home %}
+                    <a class="nav-link" href="/">Home</a>
+                {% endblock %}
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Serviços</a>
+                {% block menu_servicos %}
+                    <a class="nav-link" href="{% url 'website_servicos' %}">Serviços</a>
+                {% endblock %}
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Sobre</a>
+                {% block menu_sobre %}
+                    <a class="nav-link" href="#">Sobre</a>
+                {% endblock %}
             </li>
             <li class="nav-item">
-                <a class="nav-link">Plano</a>
+                {% block menu_plano %}
+                    <a class="nav-link" href="#">Plano</a>
+                {% endblock %}
             </li>
             <li class="nav-item">
-                <a class="nav-link">Contatos</a>
+                {% block menu_contato %}
+                    <a class="nav-link" href="{% url 'website_contato' %}">Contatos</a>
+                {% endblock %}
             </li>
             <li class="nav-item">
-                <a class="nav-link">Sistema</a>
+                {% block menu_sistema %}
+                    <a class="nav-link" href="{% url 'core_home' %}">Sistema</a>
+                {% endblock %}
             </li>
         </ul>
     </div>
