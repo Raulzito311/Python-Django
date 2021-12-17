@@ -1,34 +1,45 @@
 {% extends 'website/base.html' %}
+{% load bootstrap %}
 {% load static %}
 
 {% block menu_contato %}active{% endblock %}
 
 {% block main %}
+    {% if status == 'show' %}
+        <div class="alert alert-success alert-dismissible fade show row-space" role="alert">
+            {{ mensagem }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
     <div class="row row-space">
         <div class="col-6">
-            <form class="row g-3">
+            <form class="row g-3" method="POST">
+                {% csrf_token %}
                 <div class="col-md-12">
                     <label for="inputEmail4" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                    <input type="email" class="form-control" id="inputEmail4" placeholder="Email" name="email">
                 </div>
                 <div class="col-md-6">
                     <label for="inputNome4" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="inputNome4" placeholder="Nome">
+                    <input type="text" class="form-control" id="inputNome4" placeholder="Nome" name="nome">
                 </div>
                 <div class="col-md-6">
                     <label for="inputSobrenome" class="form-label">Sobrenome</label>
-                    <input type="text" class="form-control" id="inputSobrenome" placeholder="Sobrenome">
+                    <input type="text" class="form-control" id="inputSobrenome" placeholder="Sobrenome" name="sobrenome">
                 </div>
                 <div class="col-md-12">
                     <label for="inputEndereco" class="form-label">Endereco</label>
-                    <input type="text" class="form-control" id="inputEndereco" placeholder="Endereco">
+                    <input type="text" class="form-control" id="inputEndereco" placeholder="Endereco" name="endereco">
                 </div>
                 <div class="col-md-12">
-                    <textarea name="" id="" cols="53" rows="10"></textarea>
+                    <label for="inputMensagem" class="form-label">Mensagem</label>
+                    <textarea id="inputMensagem" cols="53" rows="10" name="mensagem"></textarea>
                 </div>
                 <div class="col-12">
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <input class="form-check-input" type="checkbox" id="gridCheck" name="receber-noticias">
                         <label class="form-check-label" for="gridCheck">
                             Receber novidades no email
                         </label>
