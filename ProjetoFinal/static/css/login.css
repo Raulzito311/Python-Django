@@ -1,0 +1,12 @@
+.login-frame {
+    margin-top: 100px;
+    padding: 10px;
+    background-color: #aea;
+    border-radius: 20px;
+    border: 2px solid #333;
+    text-align: center;
+}
+
+.my-form {
+    text-align: left;
+}
