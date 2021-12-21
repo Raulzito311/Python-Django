@@ -53,17 +53,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'estacionamento.wsgi.application'
 
-default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
+default_dburl = 'postgres://raulzito:raulzito@localhost:5432/raulzitodb'
 DATABASES = {
-    #'default': config('DATABASE_URL', default=default_dburl, cast=dburl),
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'raulzitodb',
-        'USER': 'raulzito',
-        'PASSWORD': 'raulzito',
-        'HOST': 'localhost',     # Or an IP Address that your DB is hosted on
-        'PORT': '5432',
-    }
+    'default': config('DATABASE_URL', default=default_dburl, cast=dburl) # 'DATABASE_URL' does not exist locally, but it exists on heroku.
+    #'default': {
+    #    'ENGINE': 'django.db.backends.postgresql',
+    #    'NAME': 'raulzitodb',
+    #    'USER': 'raulzito',
+    #    'PASSWORD': 'raulzito',
+    #    'HOST': 'localhost',     # Or an IP Address that your DB is hosted on
+    #    'PORT': '5432',
+    #}
 }
 
 AUTH_PASSWORD_VALIDATORS = [
