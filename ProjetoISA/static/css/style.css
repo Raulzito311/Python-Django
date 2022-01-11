@@ -1,0 +1,36 @@
+.row-space {
+    margin-top: 20px;
+}
+
+.logo {
+    color: green;
+    font-size: 6rem;
+    font-weight: bold;
+    font-family: serif;
+    text-align: center;
+}
+
+.isbn {
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: sans-serif;
+}
+
+.title {
+    color: grey;
+    font-size: 2.5rem;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-align: center;
+    align-self: center;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.sponsor {
+    text-align: center;
+    align-self: center;
+}

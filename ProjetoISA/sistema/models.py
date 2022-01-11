@@ -24,24 +24,24 @@ class Localizacao(models.Model):
 
 class Questionario(models.Model):
     
-    class Titulo(models.TextChoices):
-        PROPRIETARIO = 'PR', _('Proprietário')
-        POSSEIRO = 'PO', _('Posseiro')
-        ASSENTADO = 'AS', _('Assentado')
-        ARRENDATARIO = 'AR', _('Arrendatário')
-        PARCEIRO = 'PA', _('Parceiro')
-        USUFRUARIO = 'US', _('Usufruário')
-        SUCESSAO = 'SU', _('Processo sucessório em andamento')
-        PARTICIPACAO = 'PM', _('Participação da mulher na gestão')
-
-
     croqui = models.CharField(max_length=256)
     data = models.DateField
     colaborador = models.ForeignKey(Pessoa, on_delete=models.CASCADE, related_name='colaborador')
     beneficiario = models.ForeignKey(Pessoa, on_delete=models.CASCADE, related_name='beneficiario')
     localizacao = models.ForeignKey(Localizacao, on_delete=models.CASCADE)
-    titulo = models.CharField(max_length=2, choices=Titulo.choices, default=Titulo.PROPRIETARIO)
-    #posses = models.SelectMultipleField(max_length=25, choices=Titulo.choices)
+
+    #class Titulo(models.TextChoices):
+    #    PROPRIETARIO = 'PR', _('Proprietário')
+    #    POSSEIRO = 'PO', _('Posseiro')
+    #    ASSENTADO = 'AS', _('Assentado')
+    #    ARRENDATARIO = 'AR', _('Arrendatário')
+    #    PARCEIRO = 'PA', _('Parceiro')
+    #    USUFRUARIO = 'US', _('Usufruário')
+    #    SUCESSAO = 'SU', _('Processo sucessório em andamento')
+    #    PARTICIPACAO = 'PM', _('Participação da mulher na gestão')
+
+    #titulo = models.CharField(max_length=2, choices=Titulo.choices, default=Titulo.PROPRIETARIO)
+    #posses = models.TextChoices(choices=Titulo.choices)
 
     def __str__(self):
         return self.croqui
