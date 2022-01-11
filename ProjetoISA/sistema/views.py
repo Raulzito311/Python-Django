@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 
 from sistema.forms import QuestionarioForm
+from sistema.models import Questionario
 
 
 def guia(request):
@@ -9,10 +10,38 @@ def guia(request):
 
 
 def questionario(request):
+    #import pdb;pdb.set_trace() # uncomment this line so it creates a breakpoint here
     context = {}
-    form = QuestionarioForm()
+    context['message'] = ''
+    form = QuestionarioForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = QuestionarioForm()
+        context['message'] = 'Questionário salvo com sucesso!'
     context['form'] = form
     return render(request, 'sistema/questionario.html', context)
+
+
+def questionario_novo(request):
+    status = ''
+    mensagem = ''
+    if request.method == 'POST':
+        try:
+            questionario = {}
+            questionario['croqui'] = request.POST.get('croqui')
+            questionario['colaborador'] = request.POST.get('colaborador')
+            questionario['beneficiario'] = request.POST.get('beneficiario')
+            questionario['localizacao'] = request.POST.get('localizacao')
+
+            Questionario.objects.create(**questionario)
+        except Exception as e:
+            status = 'show'
+            mensagem = str(e)
+        else:
+            status = 'show'
+            mensagem = 'Contato realizado com sucesso'
+
+    return render(request, 'website/contato.html', {'status' : status, 'mensagem' : mensagem})
 
 
 def indicadores(request):
