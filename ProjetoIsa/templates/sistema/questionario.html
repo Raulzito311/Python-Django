@@ -1,0 +1,30 @@
+{% extends 'sistema/base.html' %}
+{% load bootstrap %}
+
+{% block title %}QUESTIONÁRIO{% endblock %}
+
+{% block menu_questionario %}active{% endblock %}
+
+{% block main %}
+    <div class="row row-space">
+        <div class="col-8">
+            {% if message != '' %}
+                <div class="alert alert-success alert-dismissible fade show row-space" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endif %}
+            
+            <form method="POST">
+                {% csrf_token %}
+    
+                {{ form|bootstrap }}
+    
+                <p></p>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
