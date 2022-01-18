@@ -6,7 +6,10 @@ from .views import (
     relatorio,
     plano_adequacao,
     formulas,
-    banco_de_dados
+    banco_de_dados,
+
+    pessoa_nova,
+    localizacao_nova
 )
 
 urlpatterns = [
@@ -17,4 +20,7 @@ urlpatterns = [
     path('plano-adequacao/', plano_adequacao, name='system_plano_adequacao'),
     path('formulas/', formulas, name='system_formulas'),
     path('banco-de-dados/', banco_de_dados, name='system_banco_de_dados'),
+
+    path('questionario/pessoa', pessoa_nova, name='system_questionario_pessoa'),
+    path('questionario/localizacao', localizacao_nova, name='system_questionario_localizacao'),
 ]

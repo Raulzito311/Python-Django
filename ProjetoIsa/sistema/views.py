@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.http.response import HttpResponse
 
-from sistema.forms import QuestionarioForm
-from sistema.models import Questionario
+from sistema.forms import (
+    QuestionarioForm, 
+    PessoaForm,
+    LocalizacaoForm
+)
 
 
 def guia(request):
@@ -14,12 +17,36 @@ def questionario(request):
     context = {}
     context['message'] = ''
     form = QuestionarioForm(request.POST or None)
+    
     if form.is_valid():
         form.save()
         form = QuestionarioForm()
         context['message'] = 'Questionário salvo com sucesso!'
     context['form'] = form
+
     return render(request, 'sistema/questionario.html', context)
+
+
+def pessoa_nova(request):
+    context = {}
+    form = PessoaForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponse('<script type="text/javascript">window.close()</script>')
+    context['form'] = form
+
+    return render(request, 'sistema/aux_form.html', context)
+
+
+def localizacao_nova(request):
+    context = {}
+    form = LocalizacaoForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        return HttpResponse('<script type="text/javascript">window.close()</script>')
+    context['form'] = form
+
+    return render(request, 'sistema/aux_form.html', context)
 
 
 def indicadores(request):
