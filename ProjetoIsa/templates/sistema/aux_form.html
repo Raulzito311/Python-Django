@@ -2,6 +2,10 @@
 {% load bootstrap %}
 
 {% block main %}
+    {% if close == 'true' %}
+        <!-- TODO: Update select form and close window -->
+    {% endif %}
+    
     <form method="POST">
         {% csrf_token %}
 

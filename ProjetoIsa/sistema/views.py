@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse, JsonResponse
+from django.http import JsonResponse
+from django.core import serializers
 
 from sistema.forms import (
     QuestionarioForm, 
     PessoaForm,
     LocalizacaoForm
 )
+from sistema.models import Localizacao, Pessoa
 
 
 def guia(request):
@@ -27,15 +30,32 @@ def questionario(request):
     return render(request, 'sistema/questionario.html', context)
 
 
+def check_pessoas(request):
+    if request.method == "GET":
+        serialized_pessoas = serializers.serialize('json', Pessoa.objects.all())
+        return JsonResponse({"pessoas": serialized_pessoas}, status=200)
+    return JsonResponse({"error": ""}, status=400)
+
+
 def pessoa_nova(request):
     context = {}
+    close = 'false'
     form = PessoaForm(request.POST or None)
     if form.is_valid():
         form.save()
-        return HttpResponse('<script type="text/javascript">window.close()</script>')
+        close = 'true'
+        #return HttpResponse('<script type="text/javascript">window.close()</script>')
     context['form'] = form
+    context['close'] = close
 
     return render(request, 'sistema/aux_form.html', context)
+
+
+def check_localizacoes(request):
+    if request.method == "GET":
+        serialized_localizacoes = serializers.serialize('json', Localizacao.objects.all())
+        return JsonResponse({"localizacoes": serialized_localizacoes}, status=200)
+    return JsonResponse({"error": ""}, status=400)
 
 
 def localizacao_nova(request):
@@ -50,7 +70,11 @@ def localizacao_nova(request):
 
 
 def indicadores(request):
-    return render(request, 'sistema/indicadores.html')
+    context = {}
+    pessoas = Pessoa.objects.all()
+    context['options'] = pessoas
+
+    return render(request, 'sistema/indicadores.html', context)
 
 
 def relatorio(request):

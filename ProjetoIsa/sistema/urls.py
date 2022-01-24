@@ -9,7 +9,10 @@ from .views import (
     banco_de_dados,
 
     pessoa_nova,
-    localizacao_nova
+    localizacao_nova,
+
+    check_pessoas,
+    check_localizacoes
 )
 
 urlpatterns = [
@@ -23,4 +26,7 @@ urlpatterns = [
 
     path('questionario/pessoa', pessoa_nova, name='system_questionario_pessoa'),
     path('questionario/localizacao', localizacao_nova, name='system_questionario_localizacao'),
+
+    path('questionario/ajax/pessoa', check_pessoas, name='system_questionario_ajax_pessoa'),
+    path('questionario/ajax/localizacao', check_localizacoes, name='system_questionario_ajax_localizacao'),
 ]

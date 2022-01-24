@@ -55,3 +55,28 @@
         </div>
     </div>
 {% endblock %}
+
+{% block javascript %}
+    <script>
+        document.getElementById("id_colaborador").addEventListener("focus", function() {
+            update_select_ajax('/questionario/ajax/pessoa', 'id_colaborador');
+        });
+        document.getElementById("id_colaborador").addEventListener("change", function() {
+            this.blur();
+        });
+
+        document.getElementById("id_beneficiario").addEventListener("focus", function() {
+            update_select_ajax('/questionario/ajax/pessoa', 'id_beneficiario');
+        });
+        document.getElementById("id_beneficiario").addEventListener("change", function() {
+            this.blur();
+        });
+
+        document.getElementById("id_localizacao").addEventListener("focus", function() {
+            update_select_ajax('/questionario/ajax/localizacao', 'id_localizacao');
+        });
+        document.getElementById("id_localizacao").addEventListener("change", function() {
+            this.blur();
+        });
+    </script>
+{% endblock %}
