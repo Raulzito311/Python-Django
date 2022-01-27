@@ -16,8 +16,11 @@
                     </button>
                 </div>
             {% endif %}
+            <script>
+                save_window();
+            </script>
             
-            <form method="POST">
+            <form name="form_questionario" method="POST">
                 {% csrf_token %}
     
                 <div class="row">
@@ -28,13 +31,13 @@
                         {{ form.colaborador|bootstrap }}
                     </div>
                     <div class="col-1 add-btn">
-                        <a onclick="open_pessoa_form()" class="bi bi-plus-square-fill"></a>
+                        <a onclick="open_pessoa_form('id_colaborador')" class="bi bi-plus-square-fill"></a>
                     </div>
                     <div class="col-5">
                         {{ form.beneficiario|bootstrap }}
                     </div>
                     <div class="col-1 add-btn">
-                        <a onclick="open_pessoa_form()" class="bi bi-plus-square-fill"></a>
+                        <a onclick="open_pessoa_form('id_beneficiario')" class="bi bi-plus-square-fill"></a>
                     </div>
                 </div>
                 <div class="row">
@@ -42,7 +45,7 @@
                         {{ form.localizacao|bootstrap }}
                     </div>
                     <div class="col-1 add-btn">
-                        <a onclick="open_localizacao_form()" class="bi bi-plus-square-fill"></a>
+                        <a onclick="open_localizacao_form('id_localizacao')" class="bi bi-plus-square-fill"></a>
                     </div>
                 </div>
     
@@ -58,25 +61,31 @@
 
 {% block javascript %}
     <script>
-        document.getElementById("id_colaborador").addEventListener("focus", function() {
+        var colaborador = document.getElementById("id_colaborador");
+        colaborador.classList.add("pessoa_sel");
+        /*colaborador.addEventListener("focus", function() {
             update_select_ajax('/questionario/ajax/pessoa', 'id_colaborador');
         });
-        document.getElementById("id_colaborador").addEventListener("change", function() {
+        colaborador.addEventListener("change", function() {
             this.blur();
-        });
+        });*/
 
-        document.getElementById("id_beneficiario").addEventListener("focus", function() {
+        var beneficiario = document.getElementById("id_beneficiario");
+        beneficiario.classList.add("pessoa_sel");
+        /*beneficiario.addEventListener("focus", function() {
             update_select_ajax('/questionario/ajax/pessoa', 'id_beneficiario');
         });
-        document.getElementById("id_beneficiario").addEventListener("change", function() {
+        beneficiario.addEventListener("change", function() {
             this.blur();
-        });
+        });*/
 
-        document.getElementById("id_localizacao").addEventListener("focus", function() {
+        var localizacao = document.getElementById("id_localizacao");
+        localizacao.classList.add("localizacao_sel");
+        /*localizacao.addEventListener("focus", function() {
             update_select_ajax('/questionario/ajax/localizacao', 'id_localizacao');
         });
-        document.getElementById("id_localizacao").addEventListener("change", function() {
+        localizacao.addEventListener("change", function() {
             this.blur();
-        });
+        });*/
     </script>
 {% endblock %}

@@ -24,9 +24,9 @@ urlpatterns = [
     path('formulas/', formulas, name='system_formulas'),
     path('banco-de-dados/', banco_de_dados, name='system_banco_de_dados'),
 
-    path('questionario/pessoa', pessoa_nova, name='system_questionario_pessoa'),
-    path('questionario/localizacao', localizacao_nova, name='system_questionario_localizacao'),
+    path('questionario/pessoa/<id>/', pessoa_nova, name='system_questionario_pessoa'),
+    path('questionario/localizacao/<id>/', localizacao_nova, name='system_questionario_localizacao'),
 
-    path('questionario/ajax/pessoa', check_pessoas, name='system_questionario_ajax_pessoa'),
-    path('questionario/ajax/localizacao', check_localizacoes, name='system_questionario_ajax_localizacao'),
+    path('questionario/ajax/pessoa/', check_pessoas, name='system_questionario_ajax_pessoa'),
+    path('questionario/ajax/localizacao/', check_localizacoes, name='system_questionario_ajax_localizacao'),
 ]

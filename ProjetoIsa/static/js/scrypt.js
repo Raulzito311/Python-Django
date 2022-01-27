@@ -1,16 +1,22 @@
+let questionarioWindow;
 let pessoaFormWindow;
 let localizacaoFormWindow;
 
-function open_pessoa_form() {
-    pessoaFormWindow = window.open('/questionario/pessoa', '', 'width=600,height=500');
+function save_window() {
+    questionarioWindow = window;
+    questionarioWindow.name = "Main Window";
+}
+
+function open_pessoa_form(id) {
+    pessoaFormWindow = window.open('/questionario/pessoa/' + id, 'Pessoa Form Window', 'width=600,height=500');
 }
 
 function close_pessoa_form() {
     pessoaFormWindow.close();
 }
 
-function open_localizacao_form() {
-    localizacaoFormWindow = window.open('/questionario/localizacao', '', 'width=600,height=500');
+function open_localizacao_form(id) {
+    localizacaoFormWindow = window.open('/questionario/localizacao/' + id, 'Localizacao Form Window', 'width=600,height=500');
 }
 
 function close_localizacao_form() {
@@ -20,6 +26,28 @@ function close_localizacao_form() {
 function close_win() {
     window.close();
 }
+
+function update_select(pk, str, model, id) {
+    var url = "javascript:update_selects(" + pk + ", '" + str + "', '" + model + "_sel', '" + id + "')";
+
+    window.open(url, "Main Window");
+
+    close_win();
+}
+
+function update_selects(pk, str, classname, id) {
+    var selects = document.getElementsByClassName(classname);
+
+    for (sel of selects) {
+        var opt = new Option(str, pk);
+        sel.options.add(opt);
+        if (sel.id == id) {
+            sel.selectedIndex = sel.length - 1;
+        }
+    }
+}
+
+/* Functions to update select with ajax on focus
 
 function update_select_ajax(ajax_url, sel_id) {
     $.ajax({
@@ -75,4 +103,4 @@ function update_localizacao_select(response, sel_id) {
     }
 
     sel.selectedIndex = index;
-}
+}*/

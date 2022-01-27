@@ -37,16 +37,19 @@ def check_pessoas(request):
     return JsonResponse({"error": ""}, status=400)
 
 
-def pessoa_nova(request):
+def pessoa_nova(request, id):
     context = {}
     close = 'false'
     form = PessoaForm(request.POST or None)
     if form.is_valid():
-        form.save()
+        obj = form.save()
         close = 'true'
-        #return HttpResponse('<script type="text/javascript">window.close()</script>')
+        context['pk'] = obj.pk
+        context['str'] = obj
+        context['model'] = 'pessoa'
     context['form'] = form
     context['close'] = close
+    context['id'] = id
 
     return render(request, 'sistema/aux_form.html', context)
 
@@ -58,13 +61,19 @@ def check_localizacoes(request):
     return JsonResponse({"error": ""}, status=400)
 
 
-def localizacao_nova(request):
+def localizacao_nova(request, id):
     context = {}
+    close = 'false'
     form = LocalizacaoForm(request.POST or None)
     if form.is_valid():
-        form.save()
-        return HttpResponse('<script type="text/javascript">window.close()</script>')
+        obj = form.save()
+        close = 'true'
+        context['pk'] = obj.pk
+        context['str'] = obj
+        context['model'] = 'localizacao'
     context['form'] = form
+    context['close'] = close
+    context['id'] = id
 
     return render(request, 'sistema/aux_form.html', context)
 

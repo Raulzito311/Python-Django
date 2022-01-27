@@ -3,10 +3,12 @@
 
 {% block main %}
     {% if close == 'true' %}
-        <!-- TODO: Update select form and close window -->
+        <script>
+            update_select('{{ pk }}', '{{ str }}', '{{ model }}', '{{ id }}');
+        </script>
     {% endif %}
-    
-    <form method="POST">
+
+    <form name="form1" method="POST">
         {% csrf_token %}
 
         {{ form|bootstrap }}
