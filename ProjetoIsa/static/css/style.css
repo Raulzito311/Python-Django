@@ -36,10 +36,10 @@ img {
 }
 
 .my-alert {
-    position: fixed;
+    position: fixed !important;
     right: 20px;
     bottom: 0;
-    padding: 20px 64px 20px 30px;
+    padding: 20px 64px 20px 30px !important;
 }
 
 .close-btn {
