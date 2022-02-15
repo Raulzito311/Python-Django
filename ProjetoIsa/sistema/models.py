@@ -41,7 +41,7 @@ class Questionario(models.Model):
     #    PARTICIPACAO = 'PM', _('Participação da mulher na gestão')
 
     #titulo = models.CharField(max_length=2, choices=Titulo.choices, default=Titulo.PROPRIETARIO)
-    #posses = models.TextChoices(choices=Titulo.choices)
+    #titulos = models.CharField(max_length=256)
 
     def __str__(self):
         return self.croqui

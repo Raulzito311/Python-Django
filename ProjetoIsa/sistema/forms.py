@@ -1,4 +1,4 @@
-from django.forms import ModelForm, fields, models
+from django.forms import ModelForm, MultipleChoiceField, fields, models
 from .models import (
     Questionario,
     Pessoa,
@@ -6,6 +6,15 @@ from .models import (
 )
 
 class QuestionarioForm(ModelForm):
+    CHOICES =(
+        ("PR", "Proprietário"),
+        ("PO", "Posseiro"),
+        ("AS", "Assentado"),
+        ("AR", "Arrendatário"),
+        ("PA", "Parceiro"),
+        ("US", "Usufruário"),
+    )
+    #titulos = MultipleChoiceField(choices = CHOICES)
     class Meta:
         model = Questionario
         fields = '__all__'
